@@ -1,13 +1,15 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-#include "controllers/application.h"
+#include "application.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication gui(argc, argv);
     QQmlApplicationEngine engine;
-    Application app(engine, &gui);
+    Application app(engine);
+
+    app.init();
 
     const QUrl url(u"qrc:/speechwriter/qml/main.qml"_qs);
     QObject::connect(

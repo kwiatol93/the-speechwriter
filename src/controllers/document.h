@@ -13,13 +13,17 @@ class Document : public QObject
 public:
     explicit Document(QObject *parent = nullptr);
 
+    Q_INVOKABLE bool loadSentences(const QString &file_path);
+    Q_INVOKABLE bool saveSentences(const QString &file_path);
+
     int sentencesCount() const;
     void addSentence(const QString &text = QString(), bool first_in_paragraph = false);
     bool removeSentence(int index);
-    bool swapSentences(int index_a, int index_b);
-    SentencePtr getSentence(int index);
+    bool swapSentences(int index_i, int index_j);
+    SentencePtr sentence(int index);
 
 signals:
+    void sentencesLoaded();
 
 private:
     bool isIndexValid(int index);

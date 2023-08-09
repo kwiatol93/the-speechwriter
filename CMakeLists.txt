@@ -9,9 +9,10 @@ find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
 qt_add_executable(appspeechwriter
     src/main.cpp
-    src/controllers/application.cpp src/controllers/application.h
+    src/application.cpp src/application.h
     src/controllers/document.cpp src/controllers/document.h
     src/data/sentence.cpp src/data/sentence.h
+    src/models/sentencesmodel.cpp src/models/sentencesmodel.h
 )
 
 qt_add_qml_module(appspeechwriter
