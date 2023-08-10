@@ -1,8 +1,14 @@
 import QtQuick
 
+import "logic"
+
 Window {
-    width: 640
-    height: 480
+    width: 1280
+    height: 800
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("The Speechwriter")
+
+    Document {
+        anchors.fill: parent
+    }
 }

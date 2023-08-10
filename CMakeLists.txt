@@ -19,6 +19,9 @@ qt_add_qml_module(appspeechwriter
     URI speechwriter
     VERSION 1.0
     QML_FILES qml/main.qml
+    qml/ui/DocumentForm.ui.qml qml/logic/Document.qml
+    qml/ui/components/SimpleButtonForm.ui.qml qml/logic/components/SimpleButton.qml
+    qml/ui/delegates/SentenceDelegateForm.ui.qml qml/logic/delegates/SentenceDelegate.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

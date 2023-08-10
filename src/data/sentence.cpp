@@ -20,7 +20,6 @@ void Sentence::setText(const QString &text)
     {
         m_text = text;
         emit textChanged();
-        ;
     }
 }
 
