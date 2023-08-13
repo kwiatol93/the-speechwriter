@@ -15,6 +15,8 @@ public:
     explicit Sentence(QObject *parent = nullptr);
     explicit Sentence(const QString &text, bool first_in_paragraph, QObject *parent = nullptr);
 
+    bool operator==(const Sentence &other) const;
+
     QString text() const;
     void setText(const QString &text);
     bool firstInParagraph() const;

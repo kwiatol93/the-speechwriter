@@ -15,7 +15,7 @@ SentenceDelegateForm {
     textEdit.opacity: privateProps.showHint ? 0.15 : 1
 
     indentActive: model.firstInParagraph
-    duplicated: model.duplicated
+    duplicated: model.duplicated && model.text.length
 
     onChangeIndent: {
         model.firstInParagraph = !model.firstInParagraph

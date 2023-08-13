@@ -24,6 +24,10 @@ public:
 
 signals:
     void sentencesLoaded();
+    void sentenceDuplicatedChanged(int index);
+
+private slots:
+    void onSentenceDuplicatedChanged();
 
 private:
     bool isIndexValid(int index);

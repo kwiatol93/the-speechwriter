@@ -65,7 +65,7 @@ DocumentForm {
         }
     }
 
-    moveDownButton.enabled: (selectedIndex >= 0) && (selectedIndex < (sentencesList.count -1))
+    moveDownButton.enabled: (selectedIndex >= 0) && (selectedIndex < (sentencesList.count - 1))
     moveDownButton.mouseArea.onClicked: {
         moveTriggered()
         if (sentencesModel.swapSentence(selectedIndex + 1, selectedIndex)) {
@@ -78,12 +78,24 @@ DocumentForm {
         changeIndent()
     }
 
+    prevDuplicateButton.enabled: (selectedIndex >= 0) && sentencesModel.duplicated(selectedIndex)
+    prevDuplicateButton.mouseArea.onClicked: {
+        selectedIndex = sentencesModel.prevDuplicatedIndex(selectedIndex)
+    }
+
+    nextDuplicateButton.enabled: (selectedIndex >= 0) && sentencesModel.duplicated(selectedIndex)
+    nextDuplicateButton.mouseArea.onClicked: {
+        selectedIndex = sentencesModel.nextDuplicatedIndex(selectedIndex)
+    }
+
     importButton.mouseArea.onClicked: {
         app.document.loadSentences(importPath)
     }
 
     exportButton.mouseArea.onClicked: {
         app.document.saveSentences(exportPath)
+
+        sentencesModel.checkDuplicates()
     }
 
     Component.onCompleted: {

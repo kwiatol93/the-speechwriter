@@ -9,6 +9,11 @@ Sentence::Sentence(const QString &text, bool first_in_paragraph, QObject *parent
 {
 }
 
+bool Sentence::operator==(const Sentence &other) const
+{
+    return (m_text.simplified().trimmed() == other.m_text.simplified().trimmed());
+}
+
 QString Sentence::text() const
 {
     return m_text;

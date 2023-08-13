@@ -12,6 +12,8 @@ Item {
     property alias importPath: importPath.text
     property alias exportButton: exportButton
     property alias exportPath: exportPath.text
+    property alias prevDuplicateButton: prevDuplicateButton
+    property alias nextDuplicateButton: nextDuplicateButton
 
     ListView {
         id: sentencesList
@@ -79,6 +81,18 @@ Item {
                 id: indentButton
 
                 text: qsTr("Set Indent")
+            }
+
+            SimpleButton {
+                id: prevDuplicateButton
+
+                text: qsTr("Prev Duplicate")
+            }
+
+            SimpleButton {
+                id: nextDuplicateButton
+
+                text: qsTr("Next Duplicate")
             }
         }
 

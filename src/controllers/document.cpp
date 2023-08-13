@@ -49,6 +49,11 @@ bool Document::loadSentences(const QString &file_path)
         if (!sentences.isEmpty())
         {
             m_sentences = sentences;
+            for (const auto &sentence : m_sentences)
+            {
+                connect(sentence.get(), &Sentence::duplicatedChanged, this, &Document::onSentenceDuplicatedChanged);
+            }
+
             emit sentencesLoaded();
 
             return true;
@@ -98,7 +103,10 @@ int Document::sentencesCount() const
 
 void Document::addSentence(const QString &text, bool first_in_paragraph)
 {
-    m_sentences.append(SentencePtr(new Sentence(text, first_in_paragraph)));
+    auto sentence = SentencePtr(new Sentence(text, first_in_paragraph));
+    m_sentences.append(sentence);
+
+    connect(sentence.get(), &Sentence::duplicatedChanged, this, &Document::onSentenceDuplicatedChanged);
 }
 
 bool Document::removeSentence(int index)
@@ -133,6 +141,14 @@ SentencePtr Document::sentence(int index)
     }
 
     return SentencePtr();
+}
+
+void Document::onSentenceDuplicatedChanged()
+{
+    auto sentence = dynamic_cast<Sentence*>(sender());
+    int index = m_sentences.indexOf(sentence);
+
+    emit sentenceDuplicatedChanged(index);
 }
 
 bool Document::isIndexValid(int index)

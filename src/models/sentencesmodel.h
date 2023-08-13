@@ -27,9 +27,17 @@ public:
     Q_INVOKABLE void addSentence();
     Q_INVOKABLE bool removeSentence(int index);
     Q_INVOKABLE bool swapSentence(int index_i, int index_j);
+    Q_INVOKABLE void checkDuplicates();
+    Q_INVOKABLE bool duplicated(int index) const;
+    Q_INVOKABLE int prevDuplicatedIndex(int index) const;
+    Q_INVOKABLE int nextDuplicatedIndex(int index) const;
+
+private slots:
+    void onSentenceDuplicatedChanged(int index);
 
 private:
     Document &m_document;
+    QList<QList<int>> m_duplicates;
 };
 
 #endif // SENTENCES_MODEL_H
