@@ -27,6 +27,7 @@ DocumentForm {
 
         Connections {
             target: root
+
             function onChangeIndent() {
                 if (selectedIndex === index) {
                     delegate.changeIndent()
@@ -94,11 +95,5 @@ DocumentForm {
 
     exportButton.mouseArea.onClicked: {
         app.document.saveSentences(exportPath)
-
-        sentencesModel.checkDuplicates()
-    }
-
-    Component.onCompleted: {
-        importPath = "D:\\Projekty\\tekst.txt"
     }
 }
